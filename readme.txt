@@ -6,7 +6,7 @@ Requires at least: 2.9
 Tested up to: 3.1
 Stable tag: trunk
 
-Adds the referrering link from which a commenting user came from to comment notifications and Comments screen.
+Adds the referrering link from which a commenting user came from to comment notifications and Comments screen. WARNING: PHP 5 only.
 
 == Description ==
 
