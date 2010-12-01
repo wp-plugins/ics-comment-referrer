@@ -1,0 +1,44 @@
+# Ukrainian translation for wp-plugin-comment-referrer
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the wp-plugin-comment-referrer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-plugin-comment-referrer\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-11-24 22:24+0200\n"
+"PO-Revision-Date: 2010-11-24 21:03+0000\n"
+"Last-Translator: Vladimir Kolesnikov <vladimir@extrememember.com>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-12-01 19:12+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../../admin.php:35
+msgid "Report a Bug"
+msgstr "Сповістити про помилку"
+
+#: ../../admin.php:36
+msgid "Ask a Question"
+msgstr "Поставити питання"
+
+#: ../../admin.php:43
+msgid "Referrer"
+msgstr "Referrer"
+
+#: ../../admin.php:52
+#, php-format
+msgid "<strong>Referer</strong>: %s<br/>"
+msgstr "<strong>Referer</strong>: %s<br/>"
+
+#: ../../admin.php:53
+#, php-format
+msgid "<strong>Referer (JavaScript)</strong>: %s<br/>"
+msgstr "<strong>Referer (JavaScript)</strong>: %s<br/>"
+
+#: ../../admin.php:56 ../../admin.php:64
+msgid "N/A"
+msgstr "Н/Д"

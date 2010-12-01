@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ICS
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ICS Comment Referrer for WordPress\n"
+"Report-Msgid-Bugs-To: vladimir@extrememember.com\n"
+"POT-Creation-Date: 2010-12-01 20:57+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../ics-comment-referrer.php:92
+#, php-format
+msgid ""
+"\n"
+"Referrer: %s\n"
+msgstr ""
+
+#: ../ics-comment-referrer.php:105
+#, php-format
+msgid ""
+"\n"
+"Referrer (JavaScript): %s\n"
+msgstr ""
