@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ICS Comment Referrer for WordPress\n"
 "Report-Msgid-Bugs-To: vladimir@extrememember.com\n"
-"POT-Creation-Date: 2010-12-01 20:57+0200\n"
+"POT-Creation-Date: 2010-12-05 23:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,52 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../admin.php:35
+#: ../../admin.php:31
+msgid "General Options"
+msgstr ""
+
+#: ../../admin.php:32
+msgid "Mark comments with no referrer as spam"
+msgstr ""
+
+#: ../../admin.php:33
+msgid "Mark comments with tampered referrer as spam"
+msgstr ""
+
+#: ../../admin.php:55
+msgid "ICS Comment Referrer"
+msgstr ""
+
+#: ../../admin.php:64
+msgid "Settings"
+msgstr ""
+
+#: ../../admin.php:65
 msgid "Report a Bug"
 msgstr ""
 
-#: ../../admin.php:36
+#: ../../admin.php:66
 msgid "Ask a Question"
 msgstr ""
 
-#: ../../admin.php:43
+#: ../../admin.php:73
 msgid "Referrer"
 msgstr ""
 
-#: ../../admin.php:52
+#: ../../admin.php:82
 #, php-format
 msgid "<strong>Referer</strong>: %s<br/>"
 msgstr ""
 
-#: ../../admin.php:53
+#: ../../admin.php:83
 #, php-format
 msgid "<strong>Referer (JavaScript)</strong>: %s<br/>"
 msgstr ""
 
-#: ../../admin.php:56 ../../admin.php:64
+#: ../../admin.php:86 ../../admin.php:94
 msgid "N/A"
+msgstr ""
+
+#: ../../options.php:9
+msgid "Save Changes"
 msgstr ""

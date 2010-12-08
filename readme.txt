@@ -39,13 +39,22 @@ Please use [Launchpad](https://answers.launchpad.net/wp-plugin-comment-referrer/
 
 == Changelog ==
 
+= 0.2 =
+* Option to mark comments with missing or tampered referrer as spam
+
 = 0.1 =
 * The first public release
-* Thanks to [zeugma](https://launchpad.net/~sunder67) for Turkish translation
 
 == Upgrade Notice ==
 
 None yet.
+
+== Contributors ==
+* [Vladimir Kolesnikov](http://blog.sjinks.pro/)
+* [Ricardo A. Hermosilla Carrillo](https://launchpad.net/~rahermosillac)
+* [Pierre Slamich](https://launchpad.net/~pierre-slamich)
+* [zeugma](https://launchpad.net/~sunder67)
+* [Mauricio Peñaloza S.](https://launchpad.net/~elkan76)
 
 == Bug Reports ==
 

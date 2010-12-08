@@ -3,7 +3,7 @@
 Plugin Name: ICS Comment Referrer
 Plugin URI: https://launchpad.net/wp-plugin-comment-referrer
 Description: Adds referrer information to the comment notifications.
-Version: 0.1
+Version: 0.2
 Author: ICS
 Author URI: http://blog.sjinks.pro/
 */
@@ -28,8 +28,16 @@ Author URI: http://blog.sjinks.pro/
 		public function init()
 		{
 			if (!is_admin()) {
-				add_action('comment_form', array($this, 'comment_form'));
-				add_action('comment_post', array($this, 'comment_post'));
+				add_action('comment_form',  array($this, 'comment_form'));
+				add_action('comment_post',  array($this, 'comment_post'));
+
+				$option = get_option('icscr_options');
+				$nrs = empty($option['nrs']) ? 0 : 1;
+				$trs = empty($option['trs']) ? 0 : 1;
+
+				if ($nrs || $trs) {
+					add_filter('preprocess_comment', array($this, 'preprocess_comment'));
+				}
 
 				load_plugin_textdomain('icscr', false, 'ics-comment-referrer/lang');
 			}
@@ -50,6 +58,35 @@ Author URI: http://blog.sjinks.pro/
 			add_action('wp_footer', array($this, 'wp_footer'), 1000);
 		}
 
+		public function preprocess_comment($data)
+		{
+			if (!empty($data['comment_type']) || is_admin()) {
+				return $data;
+			}
+
+			$option = get_option('icscr_options');
+			$nrs = empty($option['nrs']) ? 0 : 1;
+			$trs = empty($option['trs']) ? 0 : 1;
+
+			if (isset($_POST['icr_ref']) && $trs) {
+				$value = stripslashes($_POST['icr_ref']);
+				if (!self::verify_hmac($value)) {
+					add_filter('pre_comment_approved', array(__CLASS__, 'pre_comment_approved'));
+				}
+			}
+			elseif (!isset($_POST['icr_ref']) && $nrs) {
+				add_filter('pre_comment_approved', array(__CLASS__, 'pre_comment_approved'));
+			}
+
+			return $data;
+		}
+
+		public function pre_comment_approved($status)
+		{
+			remove_filter('pre_comment_approved', array(__CLASS__, 'pre_comment_approved'));
+			return 'spam';
+		}
+
 		public function comment_post($comment_id)
 		{
 			if (isset($_POST['icr_jsref'])) {
@@ -61,25 +98,34 @@ Author URI: http://blog.sjinks.pro/
 
 			if (isset($_POST['icr_ref'])) {
 				$value = stripslashes($_POST['icr_ref']);
-				$value = base64_decode($value, true);
-				if (false !== $value) {
-					$hmac    = substr($value, 0, 20);
-					$referer = substr($value, 20);
-					$verify  = hash_hmac('sha1', $referer, self::get_salt(), true);
-
-					if ($verify == $hmac) {
-						update_comment_meta($comment_id, '_icr_ref', $referer);
-						add_filter('comment_notification_text', array(__CLASS__, 'add_icr_referrer'), 10, 2);
-						add_filter('comment_moderation_text',   array(__CLASS__, 'add_icr_referrer'), 10, 2);
-					}
-					else {
-						do_action('icr_referer_tampered', $comment_id);
-					}
+				if (self::verify_hmac($value)) {
+					update_comment_meta($comment_id, '_icr_ref', $referer);
+					add_filter('comment_notification_text', array(__CLASS__, 'add_icr_referrer'), 10, 2);
+					add_filter('comment_moderation_text',   array(__CLASS__, 'add_icr_referrer'), 10, 2);
+				}
+				else {
+					do_action('icr_referer_tampered', $comment_id);
 				}
 			}
 			else {
 				do_action('icr_no_referer', $comment_id);
 			}
+		}
+
+		protected static function verify_hmac($value)
+		{
+			$value = base64_decode($value, true);
+			if (false !== $value) {
+				$hmac    = substr($value, 0, 20);
+				$referer = substr($value, 20);
+				$verify  = hash_hmac('sha1', $referer, self::get_salt(), true);
+
+				if ($verify == $hmac) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		public static function add_icr_referrer($text, $comment_id)
@@ -97,8 +143,8 @@ Author URI: http://blog.sjinks.pro/
 
 		public static function add_icrjs_referrer($text, $comment_id)
 		{
-			remove_filter('comment_notification_text', array(__CLASS__, 'add_icrjs_referrer'), 10, 2);
-			remove_filter('comment_moderation_text',   array(__CLASS__, 'add_icrjs_referrer'), 10, 2);
+			remove_filter('comment_notification_text', array(__CLASS__, 'add_icrjs_referrer'), 11, 2);
+			remove_filter('comment_moderation_text',   array(__CLASS__, 'add_icrjs_referrer'), 11, 2);
 
 			$referer = trim(get_comment_meta($comment_id, '_icr_jsref', true));
 			if (!empty($referer)) {
@@ -121,17 +167,18 @@ function icr_add_referer()
 	}
 }
 var i_u = 'undefined';
-if (i_u != typeof(jQuery)) {
-	jQuery(icr_add_referer);
+var i_r = icr_add_referer;
+if (i_u != typeof jQuery) {
+	jQuery(i_r);
 }
 else if (i_u != typeof Prototype && i_u != typeof Prototype.Version) {
-	document.observe("dom:loaded", icr_add_referer);
+	document.observe("dom:loaded", i_r);
 }
 else if (window.addEventListener) {
-	window.addEventListener('load', icr_add_referer, false);
+	window.addEventListener('load', i_r, false);
 }
 else {
-	window.attachEvent('onload', icr_add_referer);
+	window.attachEvent('onload', i_r);
 }
 /*]]>*/
 </script>

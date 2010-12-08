@@ -7,38 +7,62 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-plugin-comment-referrer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-24 22:24+0200\n"
-"PO-Revision-Date: 2010-12-01 19:10+0000\n"
+"POT-Creation-Date: 2010-12-05 23:07+0200\n"
+"PO-Revision-Date: 2010-12-06 22:48+0000\n"
 "Last-Translator: Vladimir Kolesnikov <vladimir@extrememember.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-01 19:12+0000\n"
+"X-Launchpad-Export-Date: 2010-12-07 05:30+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../../admin.php:35
+#: ../../admin.php:31
+msgid "General Options"
+msgstr "Genel Seçenekler"
+
+#: ../../admin.php:32
+msgid "Mark comments with no referrer as spam"
+msgstr ""
+
+#: ../../admin.php:33
+msgid "Mark comments with tampered referrer as spam"
+msgstr ""
+
+#: ../../admin.php:55
+msgid "ICS Comment Referrer"
+msgstr "ICS Comment Referrer"
+
+#: ../../admin.php:64
+msgid "Settings"
+msgstr "Seçenekler"
+
+#: ../../admin.php:65
 msgid "Report a Bug"
 msgstr "Hata Bildir"
 
-#: ../../admin.php:36
+#: ../../admin.php:66
 msgid "Ask a Question"
 msgstr "Bir soru sor"
 
-#: ../../admin.php:43
+#: ../../admin.php:73
 msgid "Referrer"
 msgstr "Referans"
 
-#: ../../admin.php:52
+#: ../../admin.php:82
 #, php-format
 msgid "<strong>Referer</strong>: %s<br/>"
 msgstr "<strong>Referans</strong>: %s<br/>"
 
-#: ../../admin.php:53
+#: ../../admin.php:83
 #, php-format
 msgid "<strong>Referer (JavaScript)</strong>: %s<br/>"
 msgstr "<strong>Referans (JavaScript)</strong>: %s<br/>"
 
-#: ../../admin.php:56 ../../admin.php:64
+#: ../../admin.php:86 ../../admin.php:94
 msgid "N/A"
 msgstr "YOK"
+
+#: ../../options.php:9
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
